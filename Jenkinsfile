@@ -18,7 +18,7 @@ pipeline {
           }
         }
 
-        stage('error') {
+        stage('stage11') {
           steps {
             sh 'grep user /etc/passwd'
           }
@@ -27,12 +27,22 @@ pipeline {
       }
     }
 
-    stage('error') {
+    stage('stage2') {
       steps {
         sh '''if test `grep -c orsys /etc/passwd` -ne 0
 then 
 find / -user orsys  > /tmp/orsys
 fi
+'''
+      }
+    }
+
+    stage('stage3') {
+      steps {
+        sh '''for i in `cat /tmp/orsys`
+do 
+ls -il $i
+done
 '''
       }
     }
