@@ -18,16 +18,16 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
-            sh 'grep user /etc/passwd/'
+            sh 'grep user /etc/passwd'
           }
         }
 
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         sh '''if test `grep -c orsys /etc/passwd` -ne 0
 then 
